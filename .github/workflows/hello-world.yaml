@@ -24,7 +24,7 @@ jobs:
         
       - name: Build and Push Container
         run: |- 
-             docker build -t "gcr.io/rare-cubist-450012-v1/python-repo/test:${{ github.sha }}" ./
-             docker push "gcr.io/rare-cubist-450012-v1/python-repo/test:${{ github.sha }}"
+             docker build -t "gcr.io/asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo/test:${{ github.sha }}" ./
+             docker push "gcr.io/asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo/test:${{ github.sha }}"
             
              
