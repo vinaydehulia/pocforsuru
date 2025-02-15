@@ -1,14 +1,17 @@
 # action.yml
 name: 'python image build'
 description: 'Greet someone and record the time'
-inputs:
-  test:  # id of input
-    description: 'dummy input'
-    required: true
-    default: 'default'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+
+on:
+  workflow_dispatch:
+    inputs:
+      test:  # id of input
+      description: 'dummy input'
+      required: true
+      default: 'default'
+    outputs:
+      time: # id of output
+      description: 'The time we greeted you'
  
 jobs:
   docker-build:
