@@ -1,40 +1,18 @@
-# action.yml
-name: 'python image build'
-description: 'Greet someone and record the time'
-
-on:
-  workflow_dispatch:
-    inputs:
-      test:  # id of input
-      description: 'dummy input'
-      required: true
-      default: 'default'
-    outputs:
-      time: # id of output
-      description: 'The time we greeted you'
- 
+name: docker-build
+run-name: docker-build
+on: push
 jobs:
-  docker-build:
-    name: docker-build
-    runs-on: ubuntu-20.04
+  my-job:
+    runs-on: ubuntu-latest
     steps:
-     - name: Docker Login
-       env:
-         ARTIFACTORY_JSON: "${{ secrets.ARTIFACTORY_JSON }}"
-       shell: bash
-       run: |
-         cat ${ARTIFACTORY_JSON} | docker login -u _json_key_base64 --password-stdin https://asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo
-         
-     - name: Docker Version
-       id: set_version     
-       run: |
-        echo "VERSION=$(date +%F-%H-%M-%S)" >> $GITHUB_OUTPUT
-       
-     - name: Docker Build
-       env:
-         ARTIFACTORY_JSON: "${{ secrets.ARTIFACTORY_JSON }}"
-       shell: bash
-       run: |
-         ls -lrt
-         docker build -t https://asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo/pocforsuru:{{ steps.set_version.outputs.VERSION }}
-         .
+      - name: Docker Login
+        env: 
+          ARTIFACTORY_JSON: "${{ secrets.ARTIFACTORY_JSON }}"
+        run: |- 
+             echo ${ARTIFACTORY_JSON} | docker login -u _json_key --password-stdin https://asia-south1-docker.pkg.dev
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build and Push Container
+        run: |- 
+             docker build -t "asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo/test:${{ github.sha }}" ./
+             docker push "asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo/test:${{ github.sha }}"
