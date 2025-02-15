@@ -32,6 +32,7 @@ jobs:
 
       - name: Build and Push Container
         run: |- 
-             docker build -t "asia-south1-docker.pkg.dev/python-repo/test:${{ github.sha }}" ./
-             docker push "https://asia-south1-docker.pkg.dev/python-repo/test:${{ github.sha }}"
+             docker build -t "asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo/test:${{ github.sha }}" ./
+             docker push "asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo/test:${{ github.sha }}"
+             
              
