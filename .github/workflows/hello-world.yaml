@@ -6,11 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: my-step
-        run: |
-        echo "Hello World!"
+        run: echo "Hello World!"
 
      - name: Docker Login
        env:
          ARTIFACTORY_JSON: "${{ secrets.ARTIFACTORY_JSON }}"
-       run: |
-         cat ${ARTIFACTORY_JSON} | docker login -u _json_key_base64 --password-stdin https://asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo
+       run: cat ${ARTIFACTORY_JSON} | docker login -u _json_key_base64 --password-stdin https://asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo
