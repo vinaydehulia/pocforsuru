@@ -1,5 +1,5 @@
-name: docker-build
-run-name: docker-build
+name: Docker-Build
+run-name: Docker-Build
 on: push
 jobs:
   build-publish-image:
@@ -17,7 +17,7 @@ jobs:
       - name: set Version
         id: Set_version
         run: |- 
-             echo "version=$$(date +'%Y-%m-%d-T%-H%-M-%S')" >> $GITHUB_OUTPUT /
+             echo "version=$(date +'%Y-%m-%d-T%-H%-M-%S')" >> $GITHUB_OUTPUT /
              echo ${version}
       - name: Build and Push Container
         run: |- 
