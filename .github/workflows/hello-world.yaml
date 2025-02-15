@@ -19,6 +19,9 @@ jobs:
           username: _json_key
           password: ${{ secrets.ARTIFACTORY_JSON }}
         
+      - name: Checkout
+        uses: actions/checkout@v2
+        
       - name: Build and Push Container
         run: |- 
              docker build -t "asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo/test:${{ github.sha }}" ./
