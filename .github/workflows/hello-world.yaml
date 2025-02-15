@@ -21,13 +21,17 @@ jobs:
           username: _json_key
           password: ${{ secrets.ARTIFACTORY_JSON }}
         
-      - name: Checkout
-        uses: actions/checkout@v2
-        
-      - name: Build and Push Container
+      - name: Docker Login
         env: 
           ARTIFACTORY_JSON: "${{ secrets.ARTIFACTORY_KEY }}"
         run: |- 
-             echo ${ARTIFACTORY_JSON}  docker login -u KEY-TYPE --password-stdin https://asia-south1-docker.pkg.dev /
+             echo ${ARTIFACTORY_JSON}  docker login -u KEY-TYPE --password-stdin https://asia-south1-docker.pkg.dev
+             
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build and Push Container
+        run: |- 
              docker build -t "asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo/test:${{ github.sha }}" ./
              docker push "asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo/test:${{ github.sha }}"
+             
