@@ -17,7 +17,7 @@ jobs:
       - name: set Version
         id: Set_version
         run: |- 
-             echo "VERSION=$(date)" >> $GITHUB_OUTPUT
+             echo "version=$$(date +'%Y-%m-%d-T%-H%-M-%S')" >> $GITHUB_OUTPUT
       - name: Build and Push Container
         run: |- 
              docker build -t "asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo/test:${{ github.sha }}-{{ steps.set_version.outputs.version }}" ./
