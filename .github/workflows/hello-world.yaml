@@ -23,9 +23,9 @@ jobs:
         
       - name: Docker Login
         env: 
-          ARTIFACTORY_JSON: "${{ secrets.ARTIFACTORY_KEY }}"
+          ARTIFACTORY_JSON: "${{ secrets.ARTIFACTORY_JSON }}"
         run: |- 
-             echo ${ARTIFACTORY_JSON}  docker login -u KEY-TYPE --password-stdin https://asia-south1-docker.pkg.dev
+             echo ${ARTIFACTORY_JSON}  docker login -u _json_key --password-stdin https://asia-south1-docker.pkg.dev
              
       - name: Checkout
         uses: actions/checkout@v2
