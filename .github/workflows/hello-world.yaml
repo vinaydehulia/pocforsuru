@@ -8,7 +8,7 @@ jobs:
       - name: my-step
         run: echo "Hello World!"
       - name: echo secret
-        env:
+        env: 
           ARTIFACTORY_JSON: "${{ secrets.ARTIFACTORY_JSON }}"
         run: echo ${ARTIFACTORY_JSON}
       - name: Docker Login
