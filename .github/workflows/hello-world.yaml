@@ -31,4 +31,4 @@ jobs:
 #        env:
 #          ARTIFACTORY_JSON: "${{ secrets.ARTIFACTORY_JSON }}"
 #        run: echo ${ARTIFACTORY_JSON} | docker login -u _json_key_base64 --password-stdin https://asia-south1-docker.pkg.dev
-#
+# 
