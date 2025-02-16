@@ -17,6 +17,15 @@ def receive_data():
     data = request.get_json()
 
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    # Initialize Google Cloud Logging client
+    try:
+        client = google.cloud.logging.Client()
+        client.setup_logging()
+        logging.info(f"Google Cloud Logging initialized successfully - [{current_time}] ")
+    except Exception as e:
+        logging.error(f"Failed to initialize Google Cloud Logging: {e}")
+
+
     # Log a message with the current time
     logging.info(f'[{current_time}] Hello, Docker! endpoint was accessed.')
     logging.info(f'json data recived [{data}] at [{current_time}]')
@@ -80,7 +89,7 @@ def receive_data():
 
     # Process the data (example: echo back the received data)
     response = {
-        "message": "Data received successfully-1",
+        "message": f"Data received successfully-[{current_time}]",
         "received_data": data
     }
 
