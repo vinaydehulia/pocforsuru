@@ -17,6 +17,7 @@ def receive_data():
     data = request.get_json()
 
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    curr_time = datetime.now().strftime('%Y%m%d%H%M%S')
     # Initialize Google Cloud Logging client
     try:
         client = google.cloud.logging.Client()
@@ -41,7 +42,7 @@ def receive_data():
     # Video Settings
     width, height = 800, 600
     fps = 30
-    output_file = "/usr/local/output_video.mp4"
+    output_file = f"/tmp/output_video-{curr_time}.mp4"
     
     logging.info(f'setupu output file path [{output_file}]')
     
