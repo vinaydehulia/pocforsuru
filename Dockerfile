@@ -21,8 +21,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the application code into the container
 COPY app.py .
 
+# Create the directory for the font
+RUN mkdir -p /usr/share/fonts/truetype/dejavu
+
 # Copy the DejaVuSans-Bold.ttf font into the container
-ADD dejavu-sans-bold.ttf /usr/share/fonts/truetype/dejavu/dejavu-sans-bold.ttf
+COPY dejavu-sans-bold.ttf /usr/share/fonts/truetype/dejavu/dejavu-sans-bold.ttf
 
 # Refresh the font cache
 RUN fc-cache -f -v
