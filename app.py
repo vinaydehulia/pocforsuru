@@ -11,7 +11,9 @@ app = Flask(__name__)
 def receive_data():
     # Get JSON data from the request
     data = request.get_json()
+
     print(f"json data recived {data}")
+
     # Check if data is present
     if not data:
         return jsonify({"error": "No JSON data received"}), 400
@@ -23,7 +25,7 @@ def receive_data():
     # Video Settings
     width, height = 800, 600
     fps = 30
-    output_file = "output_video.mp4"
+    output_file = "/usr/local/output_video.mp4"
 
     # Choose a font (change the path if needed)
     font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"  # Linux/Mac
@@ -70,7 +72,7 @@ def receive_data():
 
     # Process the data (example: echo back the received data)
     response = {
-        "message": "Data received successfully",
+        "message": "Data received successfully-1",
         "received_data": data
     }
 
