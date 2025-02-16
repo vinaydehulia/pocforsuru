@@ -11,7 +11,6 @@ COPY requirements.txt .
 RUN apt-get update && apt-get install -y \
     libgl1 \
     libglib2.0-0 \
-    fonts-dejavu \
     fontconfig \
     && rm -rf /var/lib/apt/lists/*
 	
@@ -20,6 +19,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code into the container
 COPY . .
+
+# Download DejaVuSans-Bold.ttf from GitHub
+RUN mkdir -p /usr/share/fonts/truetype/dejavu && \
+    wget -O /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf \
+    https://github.com/dejavu-fonts/dejavu-fonts/raw/master/ttf/DejaVuSans-Bold.ttf
+
+# Refresh the font cache
+RUN fc-cache -f -v
 
 # Expose the port the app runs on
 EXPOSE 5000
