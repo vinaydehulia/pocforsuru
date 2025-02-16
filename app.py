@@ -5,6 +5,8 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 import google.cloud.logging
 import logging
+from datetime import datetime
+
 
 app = Flask(__name__)
 
