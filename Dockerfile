@@ -1,14 +1,23 @@
-FROM python:3.8
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
 
-
-RUN apt update
-
-RUN apt install python3-pip -y
-
-RUN pip3 install flask --break-system-packages
-
+# Set the working directory in the container
 WORKDIR /app
 
+# Copy the requirements file into the container
+COPY requirements.txt .
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code
 COPY . .
 
-CMD flask run -h 0.0.0.0 -p 5000
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
+
+# Define environment variable
+ENV FLASK_APP=app.py
+
+# Run app.py when the container launches
+CMD ["flask", "run", "--host=0.0.0.0"]
