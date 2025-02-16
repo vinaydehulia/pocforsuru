@@ -1,12 +1,14 @@
 FROM python:3.8
 
 
-ENV PYTHONUNBUFFERED True
+RUN apt update
 
-ENV APP_HOME /app
-WORKDIR $APP_HOME
-COPY . ./
+RUN apt install python3-pip -y
 
-RUN pip install flask gunicorn
+RUN pip3 install flask --break-system-packages
 
-CMD exec gunicorn --bind :5000 --workers 1 --threads 8 --timeout 0 main:app
+WORKDIR /app
+
+COPY . .
+
+CMD flask run -h 0.0.0.0 -p 5000
