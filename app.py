@@ -3,6 +3,7 @@ import json
 import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
+import google.cloud.logging
 import logging
 
 app = Flask(__name__)
