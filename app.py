@@ -11,7 +11,7 @@ app = Flask(__name__)
 def receive_data():
     # Get JSON data from the request
     data = request.get_json()
-
+    print(f"json data recived {data}")
     # Check if data is present
     if not data:
         return jsonify({"error": "No JSON data received"}), 400
