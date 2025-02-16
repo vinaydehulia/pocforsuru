@@ -81,7 +81,7 @@ def receive_data():
 
     # Release Video
     video.release()
-    logging.warning(f'✅ Video saved as [{output_file}]')
+    logging.info(f'✅ Video saved as [{output_file}]')
 
 
 #===========================
