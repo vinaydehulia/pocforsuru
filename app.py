@@ -46,8 +46,8 @@ def receive_data():
     logging.info(f'setupu output file path [{output_file}]')
     
     # Choose a font (change the path if needed)
-    #font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"  # Linux/Mac
-    font_path = "/diff/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" #Docker Path hosted on GCE
+    font_path = "/usr/share/fonts/truetype/dejavu/dejavu-sans-bold.ttf"  # Linux/Mac
+    #font_path = "/diff/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" #Docker Path hosted on GCE
     # font_path = "C:\\Windows\\Fonts\\arial.ttf"  # Windows Example
 
     # Create Video Writer
