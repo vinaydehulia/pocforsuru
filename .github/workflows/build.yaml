@@ -18,7 +18,9 @@ jobs:
         id: Set_version
         run: |- 
              echo "VERSION=$(date +'%Y-%m-%d-T%-H%-M-%S')" >> $GITHUB_OUTPUT
-      - name: Build and Push Container
+      - name: Build Docker build
         run: |- 
-             docker build -t "asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo/test:${{ steps.set_version.outputs.version }}" ./
+             docker build -t "asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo/test:${{ steps.set_version.outputs.version }}" .
+      - name:  Push Image to Artifactory
+        run: |- 
              docker push "asia-south1-docker.pkg.dev/rare-cubist-450012-v1/python-repo/test:${{ steps.set_version.outputs.version }}" 
