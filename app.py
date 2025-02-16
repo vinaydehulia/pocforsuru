@@ -15,7 +15,7 @@ def receive_data():
     data = request.get_json()
 
     print(f"json data recived {data}")
-    logging.warning(f"json data recived {data}")
+    logging.warning("json data recived ")
 
     # Check if data is present
     if not data:
@@ -30,7 +30,7 @@ def receive_data():
     fps = 30
     output_file = "/usr/local/output_video.mp4"
     
-    logging.warning(f"setupu output file path {output_file}")
+    logging.warning("setupu output file path {output_file}")
     
     # Choose a font (change the path if needed)
     font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"  # Linux/Mac
@@ -69,7 +69,7 @@ def receive_data():
     # Release Video
     video.release()
     print(f"✅ Video saved as {output_file}")
-    logging.warning(f"✅ Video saved as {output_file}")
+    logging.warning("✅ Video saved as {output_file}")
 
 
 #===========================
